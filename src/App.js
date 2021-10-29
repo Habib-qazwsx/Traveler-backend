@@ -1,23 +1,57 @@
-import logo from './logo.svg';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import BookingPackages from './Components/BookingPackages/BookingPackages';
+import Header from './Components/Header/Header';
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
+import Packages from './Components/Packages/Packages';
+import NotFound from './Components/NotFound/NotFound';
+import AboutUs from './Components/AboutUs/AboutUs';
+import Contact from './Components/Contact/Contact';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Header></Header>
+        <Switch>
+
+          <Route exact path='/'>
+            <Home></Home>
+          </Route>
+
+          <Route path='/home'>
+            <Home></Home>
+          </Route>
+
+          <Route path='/packages'>
+            <Packages></Packages>
+          </Route>
+
+          <Route path='/bookingpackages'> 
+            <BookingPackages></BookingPackages>
+          </Route>
+
+          <Route>
+            <AboutUs></AboutUs>
+          </Route>
+
+          <Route>
+            <Contact></Contact>
+          </Route>
+
+          <Route path='/login'>
+            <Login></Login>
+          </Route>
+
+          <Route path='*'>
+            <NotFound></NotFound>
+          </Route>
+        </Switch>
+
+      </BrowserRouter>
     </div>
   );
 }
